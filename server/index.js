@@ -16,7 +16,6 @@ const fs = require("fs");
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "deirkjeidsijqi3IFEIRJ39erkef";
 
-
 app.use(cookieParser());
 app.use(express.json());
 app.use(
@@ -39,7 +38,6 @@ function getUserDataFromReq(req) {
 app.get("/", (req, res) => {
   res.json("Welcome to airbnb app");
 });
-
 
 app.post("/register", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
@@ -124,9 +122,9 @@ app.post("/upload", photoMiddleware.array("photos", 100), (req, res) => {
   res.json(uploadedFiles);
 });
 
-app.post("/upload",(req,res)=>{
-  res.json("hello upload")
-})
+app.post("/upload", (req, res) => {
+  res.json("hello upload");
+});
 
 app.post("/places", (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
