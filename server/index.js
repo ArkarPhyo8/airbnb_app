@@ -36,7 +36,7 @@ require("dotenv").config();
 // }
 
 app.get("/", (req, res) => {
-  res.json("Welcome to airbnb");
+  res.json("Welcome to airbnb app");
 });
 
 // app.post("/register", async (req, res) => {
