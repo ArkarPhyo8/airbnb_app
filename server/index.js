@@ -41,7 +41,6 @@ app.get("/", (req, res) => {
 });
 
 app.post("/register",(req,res)=>{
-  const {name,email,password}=req.body;
   res.josn("hello")
 })
 
