@@ -15,7 +15,7 @@ const fs = require("fs");
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "deirkjeidsijqi3IFEIRJ39erkef";
-const photoMiddleware = multer({ dest: "uploads" });
+// const photoMiddleware = multer({ dest: "uploads" });
 
 app.use(cookieParser());
 app.use(express.json());
