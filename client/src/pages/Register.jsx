@@ -9,11 +9,13 @@ export default function RegisterPage() {
   async function registerUser(ev) {
     ev.preventDefault();
     try {
-      await axios.post("/register", {
+     const res= await axios.post("/register", {
         name,
         email,
         password,
       });
+     const data= await res.json()
+      console.log(data);
       alert("Registration successful. Now you can log in");
     } catch (e) {
       alert("Registration failed. Please try again later");
