@@ -42,7 +42,7 @@ app.get("/", (req, res) => {
 
 app.post("/register",(req,res)=>{
   const {name,email,password}=req.body;
-  res.josn({name,email,password})
+  res.josn("hello)
 })
 
 // app.post("/register", async (req, res) => {
