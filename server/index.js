@@ -122,6 +122,9 @@ app.post("/upload-by-link", async (req, res) => {
 //   }
 //   res.json(uploadedFiles);
 // });
+app.post("/upload",(req,res)=>{
+  res.json("hello upload")
+})
 
 app.post("/places", (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
