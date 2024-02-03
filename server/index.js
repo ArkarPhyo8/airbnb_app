@@ -40,7 +40,7 @@ app.get("/", (req, res) => {
   res.json("Welcome to airbnb app");
 });
 
-app.post("/register",(req,res)=>{
+app.get("/register",(req,res)=>{
   res.josn("hello")
 })
 
