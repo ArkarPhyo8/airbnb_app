@@ -1,17 +1,17 @@
 const express = require("express");
 const app = express();
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 require("dotenv").config();
-// const cors = require("cors");
+const cors = require("cors");
 // const { mongoose } = require("mongoose");
-// const User = require("./models/User");
-// const Place = require("./models/Place");
-// const Booking = require("./models/Booking");
-// const cookieParser = require("cookie-parser");
-// const imageDownloader = require("image-downloader");
-// const multer = require("multer");
-// const fs = require("fs");
+const User = require("./models/User");
+const Place = require("./models/Place");
+const Booking = require("./models/Booking");
+const cookieParser = require("cookie-parser");
+const imageDownloader = require("image-downloader");
+const multer = require("multer");
+const fs = require("fs");
 
 // const bcryptSalt = bcrypt.genSaltSync(10);
 // const jwtSecret = "deirkjeidsijqi3IFEIRJ39erkef";
