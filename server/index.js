@@ -22,7 +22,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: "https://airbnb-app-frontend.vercel.app",
+    origin: "http://localhost:5173",
   })
 );
 app.use("/uploads", express.static(__dirname + "/uploads"));
@@ -40,25 +40,22 @@ app.get("/", (req, res) => {
   res.json("Welcome to airbnb app");
 });
 
-app.get("/register",(req,res)=>{
-  res.josn("hello")
-})
 
-// app.post("/register", async (req, res) => {
-//   mongoose.connect(process.env.MONGO_URL);
-//   const { name, email, password } = req.body;
+app.post("/register", async (req, res) => {
+  mongoose.connect(process.env.MONGO_URL);
+  const { name, email, password } = req.body;
 
-//   try {
-//     const userDoc = await User.create({
-//       name,
-//       email,
-//       password: bcrypt.hashSync(password, bcryptSalt),
-//     });
-//     res.json(userDoc);
-//   } catch (e) {
-//     res.status(422).json(e);
-//   }
-// });
+  try {
+    const userDoc = await User.create({
+      name,
+      email,
+      password: bcrypt.hashSync(password, bcryptSalt),
+    });
+    res.json(userDoc);
+  } catch (e) {
+    res.status(422).json(e);
+  }
+});
 
 app.post("/login", async (req, res) => {
   mongoose.connect(process.env.MONGO_URL);
@@ -113,19 +110,20 @@ app.post("/upload-by-link", async (req, res) => {
   res.json(newName);
 });
 
-// const photoMiddleware = multer({ dest: "uploads" });
-// app.post("/upload", photoMiddleware.array("photos", 100), (req, res) => {
-//   const uploadedFiles = [];
-//   for (let i = 0; i < req.files.length; i++) {
-//     const { path, originalname } = req.files[i];
-//     const parts = originalname.split(".");
-//     const ext = parts[parts.length - 1];
-//     newPath = path + "." + ext;
-//     fs.renameSync(path, newPath);
-//     uploadedFiles.push(newPath.replace("uploads/", ""));
-//   }
-//   res.json(uploadedFiles);
-// });
+const photoMiddleware = multer({ dest: "uploads" });
+app.post("/upload", photoMiddleware.array("photos", 100), (req, res) => {
+  const uploadedFiles = [];
+  for (let i = 0; i < req.files.length; i++) {
+    const { path, originalname } = req.files[i];
+    const parts = originalname.split(".");
+    const ext = parts[parts.length - 1];
+    newPath = path + "." + ext;
+    fs.renameSync(path, newPath);
+    uploadedFiles.push(newPath.replace("uploads/", ""));
+  }
+  res.json(uploadedFiles);
+});
+
 app.post("/upload",(req,res)=>{
   res.json("hello upload")
 })
