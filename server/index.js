@@ -80,33 +80,33 @@ app.post("/login", async (req, res) => {
   }
 });
 
-// app.post("/logout", (req, res) => {
-//   res.cookie("token", "").json("true");
-// });
+app.post("/logout", (req, res) => {
+  res.cookie("token", "").json("true");
+});
 
-// app.get("/profile", (req, res) => {
-//   mongoose.connect(process.env.MONGO_URL);
-//   const { token } = req.cookies;
-//   if (token) {
-//     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-//       if (err) throw err;
-//       const { name, email, _id } = await User.findById(userData.id);
-//       res.json({ name, email, _id });
-//     });
-//   } else {
-//     res.json(null);
-//   }
-// });
+app.get("/profile", (req, res) => {
+  mongoose.connect(process.env.MONGO_URL);
+  const { token } = req.cookies;
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      const { name, email, _id } = await User.findById(userData.id);
+      res.json({ name, email, _id });
+    });
+  } else {
+    res.json(null);
+  }
+});
 
-// app.post("/upload-by-link", async (req, res) => {
-//   const { link } = req.body;
-//   const newName = "photo" + Date.now() + ".jpg";
-//   await imageDownloader.image({
-//     url: link,
-//     dest: __dirname + "/uploads/" + newName,
-//   });
-//   res.json(newName);
-// });
+app.post("/upload-by-link", async (req, res) => {
+  const { link } = req.body;
+  const newName = "photo" + Date.now() + ".jpg";
+  await imageDownloader.image({
+    url: link,
+    dest: __dirname + "/uploads/" + newName,
+  });
+  res.json(newName);
+});
 
 // const photoMiddleware = multer({ dest: "uploads" });
 // app.post("/upload", photoMiddleware.array("photos", 100), (req, res) => {
