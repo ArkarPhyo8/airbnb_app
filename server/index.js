@@ -15,6 +15,7 @@ const fs = require("fs");
 
 const bcryptSalt = bcrypt.genSaltSync(10);
 const jwtSecret = "deirkjeidsijqi3IFEIRJ39erkef";
+const photoMiddleware = multer({ dest: "uploads" });
 
 app.use(cookieParser());
 app.use(express.json());
@@ -108,7 +109,7 @@ app.post("/upload-by-link", async (req, res) => {
   res.json(newName);
 });
 
-const photoMiddleware = multer({ dest: "uploads" });
+// const photoMiddleware = multer({ dest: "uploads" });
 // app.post("/upload", photoMiddleware.array("photos", 100), (req, res) => {
 //   const uploadedFiles = [];
 //   for (let i = 0; i < req.files.length; i++) {
