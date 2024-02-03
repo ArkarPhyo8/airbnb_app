@@ -4,7 +4,7 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const cors = require("cors");
-// const { mongoose } = require("mongoose");
+const { mongoose } = require("mongoose");
 const User = require("./models/User");
 const Place = require("./models/Place");
 const Booking = require("./models/Booking");
