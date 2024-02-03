@@ -13,18 +13,18 @@ const imageDownloader = require("image-downloader");
 const multer = require("multer");
 const fs = require("fs");
 
-// const bcryptSalt = bcrypt.genSaltSync(10);
-// const jwtSecret = "deirkjeidsijqi3IFEIRJ39erkef";
+const bcryptSalt = bcrypt.genSaltSync(10);
+const jwtSecret = "deirkjeidsijqi3IFEIRJ39erkef";
 
-// app.use(cookieParser());
-// app.use(express.json());
-// app.use(
-//   cors({
-//     credentials: true,
-//     origin: "http://localhost:5173",
-//   })
-// );
-// app.use("/uploads", express.static(__dirname + "/uploads"));
+app.use(cookieParser());
+app.use(express.json());
+app.use(
+  cors({
+    credentials: true,
+    origin: "http://localhost:5173",
+  })
+);
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 // function getUserDataFromReq(req) {
 //   return new Promise((resolve, rejects) => {
